@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    <style>
+        .node  {
+            width: 30px;
+            height: 30px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="menu-h">
+            <ul>
+                <li><a href="home.html">Página Inicial</a></li>
+                <li><a href="exerc.html">Exercícios</a></li>
+                <li><a href="aulas.html">Aulas</a></li>
+            </ul>
+        </nav>
+    
+    
+    
+       </header>
+       <h1>Árvore Binária</h1>
+    <input type="text" id="rootValue" placeholder="Digite o valor ">
+    <button onclick="criarArvore()">Criar Árvore</button>
+    <div id="arvore"></div>
+
+    <script>
+        const arvore = {};
+
+        function criarArvore() {
+            const raiz = document.getElementById('rootValue').value;
+            arvore[raiz] = { left: null, right: null };
+            atualizarVisualizacao();
+        }
+
+        function atualizarVisualizacao() {
+            const arvoreDiv = document.getElementById('arvore');
+            arvoreDiv.innerHTML = '';
+            for (const no in arvore) {
+                arvoreDiv.innerHTML += `<div class="node">${no}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>

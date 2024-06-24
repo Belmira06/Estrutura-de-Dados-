@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Visualização de Grafo</title>
+        <style>
+            .node {
+                width: 30px;
+                height: 30px;
+                background-color: #3498db;
+                border-radius: 50%;
+                display: inline-block;
+                margin: 10px;
+                cursor: pointer; /* Adicionamos um cursor de mão para indicar que os nós são clicáveis */
+            }
+            .edge {
+                position: justify;
+                border: 2px solid #3498db;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav id="menu-h">
+                <ul>
+                    <li><a href="home.html">Página Inicial</a></li>
+                    <li><a href="exerc.html">Exercícios</a></li>
+                    <li><a href="aulas.html">Aulas</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Grafos</h1>
+            <div class="node" onclick="showNeighbors('A')">A</div>
+            <div class="node" onclick="showNeighbors('B')">B</div>
+            <div class="node" onclick="showNeighbors('C')">C</div>
+            <div class="node" onclick="showNeighbors('D')">D</div>
+            <div class="node" onclick="showNeighbors('E')">E</div>
+        
+          
+            <script>
+                function showNeighbors(node) {
+                    const neighbors = getNeighbors(node);
+                    alert(`Vizinhos de ${node}: ${neighbors.join(', ')}`);
+                }
+        
+        function getNeighbors(node) {
+            // Implemente sua lógica para obter os vizinhos do nó aqui
+            switch (node) {
+                case 'A':
+                    return ['B'];
+                case 'B':
+                    return ['A', 'C'];
+                case 'C':
+                    return ['B', 'D'];
+                case 'D':
+                    return ['C', 'E'];
+                case 'E':
+                    return ['D'];
+                default:
+                    return [];
+                }
+            }
+            </script>
+        </body>
+        </html>
+        

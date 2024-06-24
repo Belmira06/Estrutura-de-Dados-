@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Ligada</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <nav id="menu-h">
+            <ul>
+                <li><a href="home.html">Página Inicial</a></li>
+                <li><a href="exerc.html">Exercícios</a></li>
+                <li><a href="aulas.html">Aulas</a></li>
+            </ul>
+        </nav>
+    
+    <h1>Lista Ligada Simples</h1>
+        <input type="text" id="valor">
+        <button onclick="adicionarElemento()">Adicionar</button>
+        <button onclick="removeItem()">Remover Elemento</button>
+    
+        <div id="lista"></div>
+    
+        <script>
+            class Node {
+                constructor(valor) {
+                    this.valor = valor;
+                    this.proximo = null;
+                }
+            }
+    
+            class LinkedList {
+                constructor() {
+                    this.cabeca = null;
+                }
+    
+                adicionarElemento(valor) {
+                    const novoNo = new Node(valor);
+                    novoNo.proximo = this.cabeca;
+                    this.cabeca = novoNo;
+                }
+    
+                exibirLista() {
+                    let atual = this.cabeca;
+                    let listaHTML = '';
+                    while (atual) {
+                        listaHTML += atual.valor + '<br>';
+                        atual = atual.proximo;
+                    }
+                    document.getElementById('lista').innerHTML = listaHTML;
+                }
+                removeItem(valor) {
+    if (!this.cabeca) {
+        return; // Lista vazia
+    }
+    if (this.cabeca.valor === valor) {
+        this.cabeca = this.cabeca.proximo;
+        return;
+    }
+    let atual = this.cabeca;
+    while (atual.proximo && atual.proximo.valor !== valor) {
+        atual = atual.proximo;
+    }
+    if (atual.proximo) {
+        atual.proximo = atual.proximo.proximo;
+    }
+}
+            }
+     
+    
+            const lista = new LinkedList();
+    
+            function adicionarElemento() {
+                const valor = document.getElementById('valor').value;
+                lista.adicionarElemento(valor);
+                lista.exibirLista();
+            }
+        
+        function removeItem() {
+            const valor = document.getElementById('valor').value;
+            lista.removeItem(valor);
+            lista.exibirLista();
+        }
+
+        </script>
+
+</body>
+</html>
+
