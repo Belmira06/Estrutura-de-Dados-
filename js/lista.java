@@ -1,9 +1,4 @@
 
-import java.util.Scanner;
-
-<!-- Inclua o Polyfill -->
-<script src="https://www.javapoly.com/javapoly.js"></script>
-
 public class ProgramaListaSimples {
 
 	public static void main(String[] args) 
@@ -64,19 +59,5 @@ public class ProgramaListaSimples {
 	}
 
 }
-<!-- Escreva seu código Java -->
-<script type="lista/java">
-  package com.demo;
-  import com.javapoly.dom.Window;
-  public class Greeter {
-    public static void sayHello(String name) {
-      Window.alert("Hello " + name + ", from Java!");
-    }
-  }
-</script>
 
-<!-- Chame seu código Java a partir do JavaScript -->
-<script type="lista.java/javascript">
-  com.demo.Greeter.sayHello("world");
-</script>
 

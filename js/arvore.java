@@ -1,5 +1,4 @@
-<!-- Inclua o Polyfill -->
-<script src="https://www.javapoly.com/javapoly.js"></script>
+
 public class Node {
  
     private String nome;
@@ -289,20 +288,5 @@ public class Main {
  
 */
 
-<!-- Escreva seu código Java -->
-<script type="arvore/java">
-  package com.demo;
-  import com.javapoly.dom.Window;
-  public class Greeter {
-    public static void sayHello(String name) {
-      Window.alert("Hello " + name + ", from Java!");
-    }
-  }
-</script>
-
-<!-- Chame seu código Java a partir do JavaScript -->
-<script type="arvore.java/javascript">
-  com.demo.Greeter.sayHello("world");
-</script>
 
 
