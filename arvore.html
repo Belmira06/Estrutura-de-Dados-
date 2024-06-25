@@ -1,21 +1,32 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Árvore Binária Interativa</title>
     <style>
-        .node  {
+        .node {
+            border: solid 2px black;
+            border-radius: 50%;
             width: 30px;
             height: 30px;
-            background-color: #3498db;
-            border-radius: 50%;
-            display: inline-block;
             text-align: center;
             line-height: 30px;
-            font-size: 14px;
             margin: 10px;
+            position: relative;
+            
+        }
+        .tree {
+            display: flex;
+            justify-content: center;
+        
+        }
+        .left-tree, .right-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
 </head>
@@ -33,26 +44,53 @@
     
        </header>
        <h1>Árvore Binária</h1>
-    <input type="text" id="rootValue" placeholder="Digite o valor ">
-    <button onclick="criarArvore()">Criar Árvore</button>
-    <div id="arvore"></div>
+    <div class="tree" id="tree">
+       
+    </div>
+
+    <input type="number" id="nodeValue" placeholder="Digite um valor">
+    <button onclick="addNode()">Adicionar Nó</button>
+    <button onclick="removeNode()">Remover Nó</button>
 
     <script>
         const arvore = {};
-
         function criarArvore() {
-            const raiz = document.getElementById('rootValue').value;
+            const raiz = document.getElementById('nodeValue').value;
             arvore[raiz] = { left: null, right: null };
             atualizarVisualizacao();
         }
 
-        function atualizarVisualizacao() {
-            const arvoreDiv = document.getElementById('arvore');
-            arvoreDiv.innerHTML = '';
-            for (const no in arvore) {
-                arvoreDiv.innerHTML += `<div class="node">${no}</div>`;
+        function addNode() {
+            const value = document.getElementById('nodeValue').value;
+            if (value) {
+                arvore[value] = { left: null, right: null };
+                atualizarVisualizacao();
             }
         }
+
+        function removeNode() {
+            const value = document.getElementById('nodeValue').value;
+            if (value && arvore[value]) {
+                delete arvore[value];
+                atualizarVisualizacao();
+            }
+        }
+
+        function atualizarVisualizacao() {
+            const arvoreDiv = document.getElementById('tree');
+            arvoreDiv.innerHTML = '';
+            const niveis = Object.keys(arvore).length;
+            let nivelAtual = 1;
+            for (const no in arvore) {
+                const nodeDiv = document.createElement('div');
+                nodeDiv.className = 'node';
+                nodeDiv.textContent = no;
+                nodeDiv.style.top = `${nivelAtual * 50}px`;
+                arvoreDiv.appendChild(nodeDiv);
+                nivelAtual--;
+            }
+            }
+        
     </script>
 </body>
 </html>
